@@ -3,160 +3,80 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Sorteio Tattoo
-  </title>
+  <title>Sorteio Tattoo</title>
   <link href="style.css" rel="stylesheet"/>
  </head>
  <body>
-  <div id="contador-numeros" style="position:fixed;top:10px;right:10px;padding:8px 12px;background:#fff;border:1px solid #ccc;border-radius:5px;z-index:1000;font-weight:bold;">
+  <div id="contador-numeros" class="contador-ativo">
    Restam 100 números
   </div>
   <div class="container">
    <!-- Tela 1 - Formulário -->
    <div class="screen active" id="form-screen">
-    <h1>
-     Cadastro para Sorteio
-    </h1>
+    <h1>Cadastro para Sorteio</h1>
     <input id="nome" placeholder="Nome completo" required="" type="text"/>
     <input id="telefone" placeholder="Telefone" required="" type="tel"/>
     <input id="instagram" placeholder="Instagram" required="" type="text"/>
     <input id="cpf" placeholder="CPF" required="" type="tel"/>
-    <button onclick="irParaRegras()">
-     Avançar
-    </button>
+    <button onclick="irParaRegras()">Avançar</button>
    </div>
    <!-- Tela 2 - Regras -->
    <div class="screen" id="regras-screen">
-    <h2>
-     Regras do Sorteio
-    </h2>
+    <h2>Regras do Sorteio</h2>
     <ol>
-     <li>
-      <strong style="color: #ff5252;">
-       📢 IMPORTANTE:
-      </strong>
-      Compartilhe uma publicação do perfil
-      <strong>
-       @genariosantitattoo
-      </strong>
-      nos seus stories
-      <strong>
-       com uma mensagem positiva
-      </strong>
-      para validar sua participação.
-     </li>
-     <button onclick="mostrarAjuda()" style="margin-top: 10px;">
-      ❓ Como compartilhar nos stories
-     </button>
+     <li><strong style="color: #ff5252;">📢 IMPORTANTE:</strong> Compartilhe uma publicação do perfil <strong>@genariosantitattoo</strong> nos seus stories <strong>com uma mensagem positiva</strong> para validar sua participação.</li>
+     <button onclick="mostrarAjuda()" style="margin-top: 10px;">❓ Como compartilhar nos stories</button>
      <div id="ajuda-container" style="display: none; margin-top: 10px; background: #222; padding: 15px; border-radius: 8px;">
-      <p>
-       <strong>
-        📌 Passo a passo:
-       </strong>
-      </p>
+      <p><strong>📌 Passo a passo:</strong></p>
       <ol>
-       <li>
-        Entre no perfil
-        <a href="https://instagram.com/genariosantitattoo" target="_blank">
-         @genariosantitattoo
-        </a>
-       </li>
-       <li>
-        Escolha uma publicação que mais te agrada
-       </li>
-       <li>
-        Toque no botão de compartilhar e selecione
-        <strong>
-         "Adicionar publicação ao seu story"
-        </strong>
-       </li>
-       <li>
-        Adicione uma frase positiva de elogio
-       </li>
+       <li>Entre no perfil <a href="https://instagram.com/genariosantitattoo" target="_blank">@genariosantitattoo</a></li>
+       <li>Escolha uma publicação que mais te agrada</li>
+       <li>Toque no botão de compartilhar e selecione <strong>"Adicionar publicação ao seu story"</strong></li>
+       <li>Adicione uma frase positiva de elogio</li>
       </ol>
-      <p>
-       <strong>
-        💬 Exemplos de frases:
-       </strong>
-      </p>
+      <p><strong>💬 Exemplos de frases:</strong></p>
       <ul>
-       <li>
-        “Trabalho incrível! 👏🔥”
-       </li>
-       <li>
-        “Quero muito ganhar essa tattoo! 💉❤️”
-       </li>
-       <li>
-        “Sigo e recomendo de olhos fechados!”
-       </li>
+       <li>“Trabalho incrível! 👏🔥”</li>
+       <li>“Quero muito ganhar essa tattoo! 💉❤️”</li>
+       <li>“Sigo e recomendo de olhos fechados!”</li>
       </ul>
      </div>
-     <li>
-      Siga o perfil
-      <strong>
-       @genarioartes
-      </strong>
-      <br/>
-      <button onclick="seguir('https://instagram.com/genarioartes', 'check1')">
-       Seguir @genarioartes
-      </button>
-      <span class="checkmark" id="check1">
-      </span>
+     <li>Siga o perfil <strong>@genarioartes</strong><br/>
+      <button onclick="seguir('https://instagram.com/genarioartes', 'check1')">Seguir @genarioartes</button>
+      <span class="checkmark" id="check1"></span>
      </li>
-     <li>
-      Siga o perfil
-      <strong>
-       @genariosantitattoo
-      </strong>
-      <br/>
-      <button onclick="seguir('https://instagram.com/genariosantitattoo', 'check2')">
-       Seguir @genariosantitattoo
-      </button>
-      <span class="checkmark" id="check2">
-      </span>
+     <li>Siga o perfil <strong>@genariosantitattoo</strong><br/>
+      <button onclick="seguir('https://instagram.com/genariosantitattoo', 'check2')">Seguir @genariosantitattoo</button>
+      <span class="checkmark" id="check2"></span>
      </li>
     </ol>
-    <button disabled="" id="continuarBtn" onclick="mostrarConfirmacao()">
-     Próximo
-    </button>
+    <button disabled="" id="continuarBtn" onclick="mostrarConfirmacao()">Próximo</button>
     <div id="confirmacao-container" style="display: none; text-align: center; margin-top: 20px;">
-     <p style="font-weight: bold; color: yellow;">
-      📲 Você compartilhou nos stories com uma mensagem positiva?
-     </p>
-     <button onclick="confirmarCompartilhamento()">
-      Sim, compartilhei!
-     </button>
+     <p style="font-weight: bold; color: yellow;">📲 Você compartilhou nos stories com uma mensagem positiva?</p>
+     <button onclick="confirmarCompartilhamento()">Sim, compartilhei!</button>
     </div>
    </div>
    <!-- Tela 3 - Números -->
    <div class="screen" id="numero-screen">
-    <h2>
-     Escolha um número
-    </h2>
-    <div class="numeros-grid" id="numeros">
-    </div>
+    <h2>Escolha um número</h2>
+    <div class="numeros-grid" id="numeros"></div>
    </div>
   </div>
   <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js">
-  </script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js">
-  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <script>
    const firebaseConfig = {
       apiKey: "AIzaSyCTmbYEko-qYaLpX_N4RrZzDy8w76G9pC4",
       authDomain: "sorteio-tattoo-gratis.firebaseapp.com",
       databaseURL: "https://sorteio-tattoo-gratis-default-rtdb.firebaseio.com",
       projectId: "sorteio-tattoo-gratis",
-      storageBucket: "sorteio-tattoo-gratis.firebasestorage.app",
+      storageBucket: "sorteio-tattoo-gratis.appspot.com",
       messagingSenderId: "278546007465",
-      appId: "1:278546007465:web:de17398bc72da535fb70b8",
-      measurementId: "G-X0BLWX5559"
+      appId: "1:278546007465:web:de17398bc72da535fb70b8"
     };
     firebase.initializeApp(firebaseConfig);
   </script>
-  <script src="script.js">
-  </script>
+  <script src="script.js"></script>
  </body>
 </html>
