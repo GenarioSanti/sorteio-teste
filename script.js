@@ -331,3 +331,14 @@ document.getElementById("telefone").addEventListener("input", function(e) {
 document.getElementById("cpf").addEventListener("input", function(e) {
   e.target.value = e.target.value.replace(/\D/g, "");
 });
+
+// Contador dinâmico de números disponíveis
+function atualizarContadorDinamico() {
+  firebase.database().ref("usuarios").on("value", snapshot => {
+    const dados = snapshot.val() || {};
+    const usados = Object.values(dados).filter(user => user.numero).length;
+    const restantes = 100 - usados;
+    atualizarContador(restantes);
+  });
+}
+window.addEventListener("load", atualizarContadorDinamico);
